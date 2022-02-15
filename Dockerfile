@@ -1,6 +1,5 @@
-# Pull base image 
-From tomcat:8-jre8 
-
-# Maintainer 
-MAINTAINER "valaxytech@gmail.com" 
-COPY ./webapp.war /usr/local/tomcat/webapps
+FROM adoptopenjdk/openjdk11:latest
+RUN mkdir /data
+COPY target/demo1-0.0.1-SNAPSHOT.jar /data/app.jar
+WORKDIR /data
+CMD ["java", "-jar", "app.jar"]
